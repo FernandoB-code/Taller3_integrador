@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/activity_main.xml" value="0.34375" />
         <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/fragment1_fragment.xml" value="0.34375" />
-        <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/fragment2_fragment.xml" value="0.34375" />
+        <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/fragment2_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/item_transaction.xml" value="0.25181159420289856" />
+        <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/transaction_fragment.xml" value="0.25181159420289856" />
       </map>
     </option>
   </component>

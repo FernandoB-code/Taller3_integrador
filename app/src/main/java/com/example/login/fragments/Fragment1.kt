@@ -40,6 +40,8 @@ class Fragment1 : Fragment() {
 
     private var userService = userServiceImpl()
 
+    private  var transactionFragment = TransactionFragment()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -78,8 +80,9 @@ class Fragment1 : Fragment() {
 
             val foundUser : User? = userService.findByEmaiAndPassword(userList ,inputEmail.editableText.toString(),inputPassword.editableText.toString())
 
+
             if (foundUser != null ) {
-                val action = Fragment1Directions.actionFragment1ToFragment2(foundUser!!.name)
+                val action = Fragment1Directions.actionFragment1ToTransaction()
                 v.findNavController().navigate(action)
 
             } else {
