@@ -13,6 +13,8 @@ import androidx.navigation.findNavController
 import com.example.login.R
 import com.example.login.entity.User
 import com.example.login.fragments.viewModels.Fragment1ViewModel
+import com.example.login.repository.TransactionRepository
+import com.example.login.repository.UserRepository
 import com.example.login.service.impl.userServiceImpl
 import com.example.login.service.userService
 import com.google.android.material.snackbar.Snackbar
@@ -29,18 +31,15 @@ class Fragment1 : Fragment() {
     private lateinit var inputEmail: EditText
     private lateinit var inputPassword: EditText
 
-    private var user1 = User("fernando", "test@test.com", "test")
-    private var user2 = User("mariano", "test1@test.com", "test1")
-    private var user3 = User("eliana", "test2@test.com", "test2")
 
-
-   // private val userList= ArrayList<User>()
-
-    private val userList : MutableList<User> = mutableListOf()
 
     private var userService = userServiceImpl()
 
     private  var transactionFragment = TransactionFragment()
+
+    var transactionRepository : TransactionRepository = TransactionRepository()
+
+    var userRepository : UserRepository = UserRepository()
 
 
     override fun onCreateView(
@@ -59,10 +58,6 @@ class Fragment1 : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        userList.add(user1)
-        userList.add(user2)
-        userList.add(user3)
-
         //navegar a la otra pantalla
 
         btnNavigate.setOnClickListener {
@@ -78,7 +73,7 @@ class Fragment1 : Fragment() {
             }
 
 
-            val foundUser : User? = userService.findByEmaiAndPassword(userList ,inputEmail.editableText.toString(),inputPassword.editableText.toString())
+            val foundUser : User? = userService.findByEmaiAndPassword(userRepository.userList ,inputEmail.editableText.toString(),inputPassword.editableText.toString())
 
 
             if (foundUser != null ) {
