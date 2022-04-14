@@ -40,14 +40,11 @@ class TransactionFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
         recyclerTransaction.setHasFixedSize(true)
-
         recyclerTransaction.layoutManager = LinearLayoutManager(context)
-
         adapter = TransactionAdapter(transactionRepository.transactionList)
-
         recyclerTransaction.adapter = adapter
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -2,7 +2,6 @@ package com.example.login.fragments
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,12 +15,10 @@ import com.example.login.fragments.viewModels.Fragment1ViewModel
 import com.example.login.repository.TransactionRepository
 import com.example.login.repository.UserRepository
 import com.example.login.service.impl.userServiceImpl
-import com.example.login.service.userService
 import com.google.android.material.snackbar.Snackbar
 
 
-
-class Fragment1 : Fragment() {
+class LoginFragment : Fragment() {
 
     private lateinit var viewModel: Fragment1ViewModel
 
@@ -46,7 +43,7 @@ class Fragment1 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        v = inflater.inflate(R.layout.fragment1_fragment, container, false)
+        v = inflater.inflate(R.layout.login_fragment, container, false)
 
         btnNavigate = v.findViewById(R.id.btnNavigate)
         inputEmail = v.findViewById(R.id.inputEmail)
@@ -77,7 +74,7 @@ class Fragment1 : Fragment() {
 
 
             if (foundUser != null ) {
-                val action = Fragment1Directions.actionFragment1ToTransaction()
+                val action = LoginFragmentDirections.actionFragment1ToTransaction()
                 v.findNavController().navigate(action)
 
             } else {

@@ -6,26 +6,29 @@
     app:startDestination="@id/fragment1">
     <fragment
         android:id="@+id/fragment1"
-        android:name="com.example.login.fragments.Fragment1"
+        android:name="com.example.login.fragments.LoginFragment"
         android:label="fragment1_fragment"
-        tools:layout="@layout/fragment1_fragment" >
+        tools:layout="@layout/login_fragment" >
         <action
             android:id="@+id/action_fragment1_to_transaction"
             app:destination="@id/transaction" />
-    </fragment>
-    <fragment
-        android:id="@+id/fragment2"
-        android:name="com.example.login.fragments.Fragment2"
-        android:label="fragment2_fragment"
-        tools:layout="@layout/fragment2_fragment" >
-        <argument
-            android:name="valor"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/transaction"
         android:name="com.example.login.fragments.TransactionFragment"
         android:label="transaction_fragment"
         tools:layout="@layout/transaction_fragment">
+        <action
+            android:id="@+id/action_transaction_to_detailTxFragment"
+            app:destination="@id/detailTxFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailTxFragment"
+        android:name="com.example.login.fragments.DetailTxFragment"
+        android:label="detail_tx_fragment"
+        tools:layout="@layout/detail_tx_fragment" >
+        <argument
+            android:name="detalle"
+            app:argType="string" />
     </fragment>
 </navigation>

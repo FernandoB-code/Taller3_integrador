@@ -4,22 +4,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
 import com.example.login.entity.Transaction
+import com.example.login.fragments.TransactionFragmentDirections
 
 
 class TransactionAdapter ( var transactionList : MutableList<Transaction>) : RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
 
     class TransactionHolder (v : View) : RecyclerView.ViewHolder(v){
+
             private var view : View
+
             init {
                 this.view = v
             }
 
         fun setAmount(amount: Double){
-            var txtAmount : TextView = view.findViewById(R.id.txItemTransaction)
+            var txtAmount : TextView = view.findViewById(R.id.transactionDetail)
             txtAmount.text = amount.toString();
+        }
+
+        fun getTxItem() : View{
+            return view.findViewById(R.id.txtItem)
+        }
+
+        fun setTxtType(txType: String) {
+            var txtType : TextView = view.findViewById(R.id.transactionDetail)
+            txtType.text = txType
         }
 
 
@@ -35,6 +48,14 @@ class TransactionAdapter ( var transactionList : MutableList<Transaction>) : Rec
 
     override fun onBindViewHolder(holder: TransactionHolder, position: Int) {
         holder.setAmount(transactionList[position].amount)
+
+        holder.getTxItem().setOnClickListener{
+
+           // val action = TransactionFragmentDirections.actionTransactionToDetailTransactionFragment(transactionList[position].txType)
+            val action = TransactionFragmentDirections.actionTransactionToDetailTxFragment(transactionList[position].txType)
+            holder.itemView.findNavController().navigate(action)
+
+        }
     }
 
     override fun getItemCount(): Int {

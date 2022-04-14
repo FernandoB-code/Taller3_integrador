@@ -8,11 +8,12 @@
     android:elevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/txtItem"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/txItemTransaction"
+            android:id="@+id/transactionDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"

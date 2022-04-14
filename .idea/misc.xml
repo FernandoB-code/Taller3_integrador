@@ -4,9 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/activity_main.xml" value="0.34375" />
+        <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/detail_transaction.xml" value="0.17798913043478262" />
+        <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/detail_transaction_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/detail_tx_fragment.xml" value="0.21467391304347827" />
         <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/fragment1_fragment.xml" value="0.34375" />
         <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/fragment2_fragment.xml" value="0.25" />
         <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/item_transaction.xml" value="0.25181159420289856" />
+        <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/login_fragment.xml" value="0.17798913043478262" />
+        <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/test.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/FLX-42/AndroidStudioProjects/Login/app/src/main/res/layout/transaction_fragment.xml" value="0.25181159420289856" />
       </map>
     </option>
