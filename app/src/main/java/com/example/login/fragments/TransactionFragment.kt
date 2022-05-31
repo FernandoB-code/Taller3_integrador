@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
@@ -19,6 +22,12 @@ class TransactionFragment : Fragment() {
     lateinit var v : View
     lateinit var adapter : TransactionAdapter
     var transactionRepository : TransactionRepository = TransactionRepository()
+
+    private lateinit var btnTransf : Button
+    private lateinit var btnDep : Button
+    private lateinit var btnConv : Button
+    private lateinit var txtAmountAccount : TextView
+
 
     companion object {
         fun newInstance() = TransactionFragment()
@@ -34,6 +43,10 @@ class TransactionFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.transaction_fragment, container, false)
         recyclerTransaction = v.findViewById(R.id.recTransaction)
+        btnTransf = v.findViewById(R.id.btnTransfer)
+        btnConv = v.findViewById(R.id.btnConvert)
+        btnDep = v.findViewById(R.id.btnDeposit)
+        txtAmountAccount = v.findViewById(R.id.amountAccount)
 
         return v
     }
@@ -45,6 +58,21 @@ class TransactionFragment : Fragment() {
         recyclerTransaction.layoutManager = LinearLayoutManager(context)
         adapter = TransactionAdapter(transactionRepository.transactionList)
         recyclerTransaction.adapter = adapter
+
+        btnTransf.setOnClickListener {
+            val action = TransactionFragmentDirections.actionTransactionToTransferMoneyFragment()
+            v.findNavController().navigate(action)
+        }
+
+        btnConv.setOnClickListener {
+            val action1 = TransactionFragmentDirections.actionTransactionToConvertFragment()
+            v.findNavController().navigate(action1)
+        }
+
+        btnDep.setOnClickListener {
+            val action1 = TransactionFragmentDirections.actionTransactionToDepositMoneyFragment()
+            v.findNavController().navigate(action1)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

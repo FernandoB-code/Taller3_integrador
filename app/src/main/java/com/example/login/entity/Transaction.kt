@@ -1,6 +1,9 @@
 package com.example.login.entity
 
-class Transaction (var amount : Double, var txType : String
+class Transaction (
+        var userTo: String,
+        var userFrom: String,
+        var ammount : Double
         ) { }
 
 

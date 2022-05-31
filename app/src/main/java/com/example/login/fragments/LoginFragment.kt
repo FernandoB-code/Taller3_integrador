@@ -27,6 +27,8 @@ class LoginFragment : Fragment() {
     private lateinit var btnNavigate: Button
     private lateinit var inputEmail: EditText
     private lateinit var inputPassword: EditText
+    private lateinit var btnNewProfile : Button
+    private lateinit var btnForgotPw : Button
 
 
 
@@ -38,6 +40,8 @@ class LoginFragment : Fragment() {
 
     var userRepository : UserRepository = UserRepository()
 
+    //private var newProfileUserFragment = newProfileUserFragment()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,12 +52,24 @@ class LoginFragment : Fragment() {
         btnNavigate = v.findViewById(R.id.btnNavigate)
         inputEmail = v.findViewById(R.id.inputEmail)
         inputPassword = v.findViewById(R.id.inputPassword)
+        btnNewProfile = v.findViewById(R.id.btnSign)
+        btnForgotPw = v.findViewById(R.id.btnForgotPw)
 
         return v
     }
 
     override fun onStart() {
         super.onStart()
+
+        btnNewProfile.setOnClickListener {
+            val action1 = LoginFragmentDirections.actionFragment1ToNewProfileUserFragment()
+            v.findNavController().navigate(action1)
+        }
+
+        btnForgotPw.setOnClickListener {
+            val action2 = LoginFragmentDirections.actionFragment1ToRecoveryPasswordFragment()
+            v.findNavController().navigate(action2)
+        }
 
         //navegar a la otra pantalla
 
@@ -89,6 +105,7 @@ class LoginFragment : Fragment() {
             }
 
         }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

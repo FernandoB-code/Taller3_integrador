@@ -2,6 +2,7 @@ package com.example.login.repository
 
 
 import com.example.login.entity.User
+import com.example.login.entity.Account
 
 class UserRepository {
 
@@ -9,8 +10,21 @@ class UserRepository {
 
     init {
 
-    userList.add(User("Fernando","test@test.com","test"))
-    userList.add(User("Test","1","1"))
+    userList.add(User(
+        "Ayelen",
+        "Centurion",
+        "35000000",
+        "test1@test.com",
+        "test1",
+        Account(58790,2000.0))
+    )
+    userList.add(User("Leandro",
+        "Centurion",
+        "37000000",
+        "test2@test.com",
+        "test2",
+        Account(54873,3000.0))
+    )
 
     }
 

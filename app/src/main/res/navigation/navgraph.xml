@@ -12,6 +12,12 @@
         <action
             android:id="@+id/action_fragment1_to_transaction"
             app:destination="@id/transaction" />
+        <action
+            android:id="@+id/action_fragment1_to_newProfileUserFragment"
+            app:destination="@id/newProfileUserFragment" />
+        <action
+            android:id="@+id/action_fragment1_to_recoveryPasswordFragment"
+            app:destination="@id/recoveryPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/transaction"
@@ -21,6 +27,15 @@
         <action
             android:id="@+id/action_transaction_to_detailTxFragment"
             app:destination="@id/detailTxFragment" />
+        <action
+            android:id="@+id/action_transaction_to_transferMoneyFragment"
+            app:destination="@id/transferMoneyFragment" />
+        <action
+            android:id="@+id/action_transaction_to_depositMoneyFragment"
+            app:destination="@id/depositMoneyFragment" />
+        <action
+            android:id="@+id/action_transaction_to_convertFragment"
+            app:destination="@id/convertFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailTxFragment"
@@ -30,5 +45,53 @@
         <argument
             android:name="detalle"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detailTxFragment_to_transaction"
+            app:destination="@id/transaction" />
+    </fragment>
+    <fragment
+        android:id="@+id/newProfileUserFragment"
+        android:name="com.example.login.fragments.NewProfileUserFragment"
+        android:label="fragment_new_profile_user"
+        tools:layout="@layout/fragment_new_profile_user" >
+        <action
+            android:id="@+id/action_newProfileUserFragment_to_fragment1"
+            app:destination="@id/fragment1" />
+    </fragment>
+    <fragment
+        android:id="@+id/recoveryPasswordFragment"
+        android:name="com.example.login.fragments.RecoveryPasswordFragment"
+        android:label="fragment_recovery_password"
+        tools:layout="@layout/fragment_recovery_password" >
+        <action
+            android:id="@+id/action_recoveryPasswordFragment_to_fragment1"
+            app:destination="@id/fragment1" />
+    </fragment>
+    <fragment
+        android:id="@+id/transferMoneyFragment"
+        android:name="com.example.login.fragments.TransferMoneyFragment"
+        android:label="fragment_transfer"
+        tools:layout="@layout/fragment_transfer" >
+        <action
+            android:id="@+id/action_transferMoneyFragment_to_transaction"
+            app:destination="@id/transaction" />
+    </fragment>
+    <fragment
+        android:id="@+id/convertFragment"
+        android:name="com.example.login.fragments.ConvertFragment"
+        android:label="fragment_convert"
+        tools:layout="@layout/fragment_convert" >
+        <action
+            android:id="@+id/action_convertFragment_to_transaction"
+            app:destination="@id/transaction" />
+    </fragment>
+    <fragment
+        android:id="@+id/depositMoneyFragment"
+        android:name="com.example.login.fragments.DepositMoneyFragment"
+        android:label="fragment_deposit_money"
+        tools:layout="@layout/fragment_deposit_money" >
+        <action
+            android:id="@+id/action_depositMoneyFragment_to_transaction"
+            app:destination="@id/transaction" />
     </fragment>
 </navigation>

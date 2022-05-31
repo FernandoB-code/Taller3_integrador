@@ -47,12 +47,10 @@ class TransactionAdapter ( var transactionList : MutableList<Transaction>) : Rec
 
 
     override fun onBindViewHolder(holder: TransactionHolder, position: Int) {
-        holder.setAmount(transactionList[position].amount)
+        holder.setAmount(transactionList[position].ammount)
 
         holder.getTxItem().setOnClickListener{
-
-           // val action = TransactionFragmentDirections.actionTransactionToDetailTransactionFragment(transactionList[position].txType)
-            val action = TransactionFragmentDirections.actionTransactionToDetailTxFragment(transactionList[position].txType)
+            val action = TransactionFragmentDirections.actionTransactionToDetailTxFragment(transactionList[position].userFrom)
             holder.itemView.findNavController().navigate(action)
 
         }
