@@ -14,6 +14,7 @@ import com.example.login.entity.User
 import com.example.login.fragments.viewModels.Fragment1ViewModel
 import com.example.login.repository.TransactionRepository
 import com.example.login.repository.UserRepository
+import com.example.login.repository.UserRepositoryFirebase
 import com.example.login.service.impl.userServiceImpl
 import com.google.android.material.snackbar.Snackbar
 
@@ -38,9 +39,9 @@ class LoginFragment : Fragment() {
 
     var transactionRepository : TransactionRepository = TransactionRepository()
 
-    var userRepository : UserRepository = UserRepository()
+    //var userRepository : UserRepository = UserRepository()
 
-    //private var newProfileUserFragment = newProfileUserFragment()
+    var userRepositoryFireBase: UserRepositoryFirebase = UserRepositoryFirebase()
 
 
     override fun onCreateView(
@@ -86,8 +87,8 @@ class LoginFragment : Fragment() {
             }
 
 
-            val foundUser : User? = userService.findByEmaiAndPassword(userRepository.userList ,inputEmail.editableText.toString(),inputPassword.editableText.toString())
-
+            //val foundUser : User? = userService.findByEmaiAndPassword(userRepository.userList ,inputEmail.editableText.toString(),inputPassword.editableText.toString())
+            val foundUser : User? = null
 
             if (foundUser != null ) {
                 val action = LoginFragmentDirections.actionFragment1ToTransaction()
@@ -105,7 +106,6 @@ class LoginFragment : Fragment() {
             }
 
         }
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

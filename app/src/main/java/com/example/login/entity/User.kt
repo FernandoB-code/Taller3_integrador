@@ -2,6 +2,10 @@ package com.example.login.entity
 
 import android.os.Parcel
 import android.os.Parcelable
+import java.util.*
+import java.util.Random
+import kotlin.random.Random.Default.nextInt
+
 
 data class User(
     var firstName : String,
@@ -9,7 +13,8 @@ data class User(
     var dni : String,
     var email: String,
     var password: String,
-    var account: Account
+    //var account: Account?
+    var accountID: String
 
     )
 {
@@ -20,26 +25,37 @@ data class User(
             "",
             "",
             "",
-            Account(0,0.0)
+            ""
            )
+
+    /*companion object{
+        private fun generateAccount(): Account{
+            var rand = Random()
+            var accountNumber = List(10) { rand.nextInt(9) }
+            println(accountNumber)
+            var balance = 2000.0
+            println(balance)
+            var cvu = String
+            println(cvu)
+            var alias = "TRIGO.CASA.VELA"
+
+            var account = Account(accountNumber,balance,cvu,alias)
+
+            return account
+        }
+
+    }*/
+
+
+    //Falta traer la cuenta
+    fun transfer(transferRequest : TransferRequest){
+        //account?.transfer(transferRequest)
+    }
+
+
+
 }
 
 
-   /* override fun describeContents(): Int {
-        TODO("Not yet implemented")
-    }
 
-    override fun writeToParcel(p0: Parcel?, p1: Int) {
-        TODO("Not yet implemented")
-    }
 
-    companion object CREATOR : Parcelable.Creator<User> {
-        override fun createFromParcel(parcel: Parcel): User {
-            return User(parcel)
-        }
-
-        override fun newArray(size: Int): Array<User?> {
-            return arrayOfNulls(size)
-        }
-    }
-}*/
