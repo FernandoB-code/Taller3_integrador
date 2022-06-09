@@ -49,10 +49,10 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewMainLogo3" />
 
     <EditText
-        android:id="@+id/userName"
+        android:id="@+id/registroname"
         android:layout_width="309dp"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="60dp"
         android:autofillHints=""
         android:background="@drawable/inputlogin"
         android:defaultFocusHighlightEnabled="false"
@@ -70,27 +70,7 @@
         tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/registrolastname"
-        android:layout_width="309dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:background="@drawable/inputlogin"
-        android:ems="10"
-        android:fontFamily="@font/poppinsbold"
-        android:hint="@string/apellido"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userName"
-        tools:ignore="TextContrastCheck" />
-
-    <EditText
-        android:id="@+id/userId"
+        android:id="@+id/registrodni"
         android:layout_width="309dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
@@ -107,7 +87,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrolastname"
+        app:layout_constraintTop_toBottomOf="@+id/registroname"
         tools:ignore="TextContrastCheck" />
 
     <EditText
@@ -128,7 +108,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userId"
+        app:layout_constraintTop_toBottomOf="@+id/registrodni"
         tools:ignore="TextContrastCheck" />
 
     <EditText
