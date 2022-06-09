@@ -12,5 +12,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.Material3.LabelMedium</item>
+    </style>
+    <style name="OrangeTheme" parent="Theme.Login">
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorSecondary">#ffffff</item>
+    </style>
+    <!-- Splash Theme -->
+    <style name="Theme.SplashScreen" parent="Theme.Login">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
 </resources>

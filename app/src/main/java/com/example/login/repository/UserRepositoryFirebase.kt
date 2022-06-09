@@ -2,21 +2,26 @@ package com.example.login.repository
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.example.login.entity.Account
 import com.example.login.entity.User
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
 class UserRepositoryFirebase {
 
-    private val auth = Firebase.auth
-    private val db = Firebase.firestore
+    //private val auth = Firebase.auth
+    //private val db = Firebase.firestore
 
 
-    var email: String = "fernandobernasconi@gmail.com"
+
+
+   /* var email: String = "fernandobernasconi@gmail.com"
     var password: String = "test100"
 
     fun login(email: String, password: String): Task<AuthResult> {
@@ -145,5 +150,5 @@ class UserRepositoryFirebase {
                     actualAccount.get().result.get("amount")
                 }
             }
-    }
+    }*/
 }

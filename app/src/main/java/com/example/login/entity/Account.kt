@@ -9,6 +9,7 @@ data class Account(
     var availableAmount : Double
 
 ){
+
     constructor() : this(
         "",
         "",

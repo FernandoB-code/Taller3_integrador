@@ -24,7 +24,7 @@ class DetailTxFragment : Fragment() {
     private lateinit var v: View
     private lateinit var btnTemp : Button
 
-    private lateinit var textView2: TextView
+    private lateinit var textView4: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,8 +40,8 @@ class DetailTxFragment : Fragment() {
 
         var txType = DetailTxFragmentArgs.fromBundle(requireArguments()).detalle
          Snackbar.make(v,txType,Snackbar.LENGTH_SHORT).show()
-        textView2 = v.findViewById(R.id.textView2)
-        textView2.text = txType
+        textView4 = v.findViewById(R.id.textView4)
+        textView4.text = txType
 
         btnTemp.setOnClickListener {
             val action = DetailTxFragmentDirections.actionDetailTxFragmentToTransaction()
