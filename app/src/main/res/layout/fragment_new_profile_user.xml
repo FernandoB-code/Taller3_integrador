@@ -52,7 +52,7 @@
         android:id="@+id/userName"
         android:layout_width="309dp"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="60dp"
         android:autofillHints=""
         android:background="@drawable/inputlogin"
         android:defaultFocusHighlightEnabled="false"
@@ -67,26 +67,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:ignore="TextContrastCheck" />
-
-    <EditText
-        android:id="@+id/registrolastname"
-        android:layout_width="309dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:background="@drawable/inputlogin"
-        android:ems="10"
-        android:fontFamily="@font/poppinsbold"
-        android:hint="@string/apellido"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userName"
         tools:ignore="TextContrastCheck" />
 
     <EditText
@@ -107,7 +87,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrolastname"
+        app:layout_constraintTop_toBottomOf="@+id/userName"
         tools:ignore="TextContrastCheck" />
 
     <EditText

@@ -8,7 +8,7 @@
     tools:context=".fragments.ProfileFragment">
 
     <EditText
-        android:id="@+id/nameUser"
+        android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toTopOf="@+id/emailUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameUser" />
+        app:layout_constraintTop_toBottomOf="@+id/userName" />
 
     <TextView
         android:id="@+id/profile"
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="Perfil"
-        app:layout_constraintBottom_toTopOf="@+id/nameUser"
+        app:layout_constraintBottom_toTopOf="@+id/userName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

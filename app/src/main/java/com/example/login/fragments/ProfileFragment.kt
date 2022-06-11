@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import com.example.login.R
 import com.example.login.viewModels.ProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -35,7 +34,7 @@ class ProfileFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        nameUser = v.findViewById(R.id.nameUser)
+        nameUser = v.findViewById(R.id.userName)
         dniUser = v.findViewById(R.id.userDni)
         emailUser = v.findViewById(R.id.emailUser)
         auth = Firebase.auth
