@@ -5,7 +5,6 @@ import android.util.Log
 import com.example.login.entity.Account
 import com.example.login.entity.User
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -16,8 +15,7 @@ class TransferRepository() {
     private val db = Firebase.firestore
     private val auth = Firebase.auth
 
-
-    suspend fun getAccounts(): MutableList<Account> {
+    suspend fun getAccountByCVU(cvu : String): MutableList<Account> {
 
         var accountList = mutableListOf<Account>()
 
@@ -29,7 +27,12 @@ class TransferRepository() {
 
             for (document in data) {
                 Log.d(ContentValues.TAG, "${document.id} => ${document.data}")
-                accountList.add(document.toObject<Account>())
+
+                if(document.toObject<Account>().CVU == cvu) {
+                    accountList.add(document.toObject<Account>())
+                }
+
+
             }
 
             accountList.toString()

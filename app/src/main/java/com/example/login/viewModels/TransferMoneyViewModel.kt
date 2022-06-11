@@ -21,9 +21,9 @@ class TransferMoneyViewModel : ViewModel() {
 
             viewModelScope.launch(Dispatchers.Main) {
 
-                var accountsList = repository.getAccounts()
+                var accountsList = repository.getAccountByCVU(cvuAlias)
 
-                var accountTO: Account? = isValidAccount(cvuAlias, accountsList)
+                var accountTO = accountsList[0]
 
                 if (accountTO != null) {
 
@@ -47,31 +47,15 @@ class TransferMoneyViewModel : ViewModel() {
 
                 }
             }
-        }
-    }
+        } else {
 
-    private fun isValidAccount(cvu: String, accountsList: MutableList<Account>): Account? {
-
-        var index: Int = 0
-        var accountFound: Account? = null
-
-        if (!accountsList.isNullOrEmpty()) {
-
-            while (index < accountsList.size && accountFound == null) {
-
-                var actual: Account = accountsList.get(index = index)
-
-                if (actual.CVU == cvu) {
-                    accountFound = actual
-
-                } else {
-                    index++
-                }
-            }
+            // error cvu invalido o saldo negativo
 
         }
-
-        return accountFound
     }
-
 }
+
+
+
+
+
