@@ -1,59 +1,86 @@
 package com.example.login.viewModels
 
+import android.util.Log
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.login.entity.Account
+import com.example.login.fragments.TransferMoneyFragment
 import com.example.login.repository.TransferRepository
 import com.example.login.repository.UserRepository
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TransferMoneyViewModel : ViewModel() {
 
-    // var accountsList : MutableList<Account>
-
     var repository = TransferRepository()
 
-    fun transfer(cvuAlias: String, amount: Double) {
+    lateinit var fragment : TransferMoneyFragment
+
+    @Throws(Exception::class)
+    fun transfer(cvuAlias: String?, amount: Double, fragment: TransferMoneyFragment) {
+
         var accountsList: MutableList<Account>
 
-        if (!cvuAlias.isNullOrEmpty() && amount > 0.0) {
+        if (!cvuAlias.isNullOrEmpty() && amount > 0) {
 
             viewModelScope.launch(Dispatchers.Main) {
 
-                var accountsList = repository.getAccountByCVU(cvuAlias)
+                try {
 
-                var accountTO = accountsList[0]
+                    var accountsList = repository.getAccountByCVU(cvuAlias)
 
-                if (accountTO != null) {
+                    if (accountsList.size != 0) { // valida la lista tenga un valor, si no, no encontró la cuenta
 
-                    var accountFROM: Account = repository.getAccountFrom()
+                        var accountTO = accountsList[0]
 
-                    accountFROM.toString()
+                        if (accountTO != null) {
 
-                    if (accountFROM.availableAmount >= amount) {
+                            var accountFROM: Account = repository.getAccountFrom()
 
-                        repository.updateAmount(amount, accountFROM, accountTO)
+                            accountFROM.toString()
 
-                        //ver como implementar el historial
+                            if (accountFROM.availableAmount >= amount) {
 
+                                repository.updateAmount(amount, accountFROM, accountTO)
+
+                                //ver como implementar el historial
+
+                            } else {
+
+                                // error saldo insuficiente
+                                throw Exception("No tiene saldo suficiente")
+                            }
+                        } else {
+
+
+                            // error no existe la cuenta con el CVU xxxxxxxxxxxxxxxxxxxxxx
+                            throw Exception("Hi There!")
+
+                        }
                     } else {
 
-                        // error saldo insuficiente
+                        // // error no existe la cuenta con el CVU xxxxxxxxxxxxxxxxxxxxxx
+                        throw Exception("No existe la cuenta con ese CVU")
                     }
-                } else {
+                } catch (e : Exception) {
 
-                    // error no existe la cuenta con el CVU xxxxxxxxxxxxxxxxxxxxxx
+                 fragment.showError(e.message.toString())
 
                 }
             }
-        } else {
-
-            // error cvu invalido o saldo negativo
-
         }
     }
 }
+
+
+
+
+
+
+
+
 
 
 
