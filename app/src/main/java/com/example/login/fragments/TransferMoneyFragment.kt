@@ -65,8 +65,6 @@ class TransferMoneyFragment : Fragment() {
 
     fun showError(message : String){
 
-       // Snackbar.make(rootLayout, message , Snackbar.LENGTH_LONG).show()
-
         val snack: Snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG)
         val view = snack.view
         val params = view.layoutParams as FrameLayout.LayoutParams
