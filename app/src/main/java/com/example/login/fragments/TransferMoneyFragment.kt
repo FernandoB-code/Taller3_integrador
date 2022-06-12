@@ -63,9 +63,7 @@ class TransferMoneyFragment : Fragment() {
         }
     }
 
-    fun showError(message : String){
-
-       // Snackbar.make(rootLayout, message , Snackbar.LENGTH_LONG).show()
+    fun showMessage(message : String){
 
         val snack: Snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG)
         val view = snack.view

@@ -21,58 +21,59 @@ class TransferMoneyViewModel : ViewModel() {
     @Throws(Exception::class)
     fun transfer(cvuAlias: String?, amount: Double, fragment: TransferMoneyFragment) {
 
-        var accountsList: MutableList<Account>
-
-        if (!cvuAlias.isNullOrEmpty() && amount > 0) {
-
             viewModelScope.launch(Dispatchers.Main) {
 
                 try {
 
-                    var accountsList = repository.getAccountByCVU(cvuAlias)
+                    if (!cvuAlias.isNullOrEmpty() && amount > 0) {
 
-                    if (accountsList.size != 0) { // valida la lista tenga un valor, si no, no encontró la cuenta
 
-                        var accountTO = accountsList[0]
+                        var accountsList : MutableList<Account> = repository.getAccountByCVU(cvuAlias)
 
-                        if (accountTO != null) {
+                        if (accountsList.size != 0) { // valida la lista tenga un valor, si no, no encontró la cuenta
 
-                            var accountFROM: Account = repository.getAccountFrom()
+                            var accountTO = accountsList[0]
 
-                            accountFROM.toString()
+                            if (accountTO != null) {
 
-                            if (accountFROM.availableAmount >= amount) {
+                                var accountFROM: Account = repository.getAccountFrom()
 
-                                repository.updateAmount(amount, accountFROM, accountTO)
+                                accountFROM.toString()
 
-                                //ver como implementar el historial
+                                if (accountFROM.availableAmount >= amount) {
 
-                            } else {
+                                    repository.updateAmount(amount, accountFROM, accountTO)
 
-                                // error saldo insuficiente
-                                throw Exception("No tiene saldo suficiente")
+                                    //ver como implementar el historial
+
+                                } else {
+
+                                    // error saldo insuficiente
+                                    throw Exception("No tiene saldo suficiente")
+                                }
                             }
                         } else {
 
-
-                            // error no existe la cuenta con el CVU xxxxxxxxxxxxxxxxxxxxxx
-                            throw Exception("Hi There!")
-
+                            // // error no existe la cuenta con el CVU xxxxxxxxxxxxxxxxxxxxxx
+                            throw Exception("No existe la cuenta con ese CVU")
                         }
                     } else {
 
-                        // // error no existe la cuenta con el CVU xxxxxxxxxxxxxxxxxxxxxx
-                        throw Exception("No existe la cuenta con ese CVU")
+                        // // CVU null o vacio
+                        throw Exception("Datos invalidos")
+
                     }
+
+                    fragment.showMessage("Transferencia realizada con exito")
+
                 } catch (e : Exception) {
 
-                 fragment.showError(e.message.toString())
+                    fragment.showMessage(e.message.toString())
 
                 }
             }
         }
     }
-}
 
 
 
