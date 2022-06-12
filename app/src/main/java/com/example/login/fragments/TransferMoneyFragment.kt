@@ -1,15 +1,21 @@
 package com.example.login.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.navigation.findNavController
+import android.widget.EditText
+import android.widget.FrameLayout
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.login.R
 import com.example.login.viewModels.TransferMoneyViewModel
+import com.google.android.material.snackbar.Snackbar
+
 
 class TransferMoneyFragment : Fragment() {
 
@@ -19,7 +25,11 @@ class TransferMoneyFragment : Fragment() {
 
     private lateinit var viewModel: TransferMoneyViewModel
 
+    private lateinit var rootLayout: ConstraintLayout
     private lateinit var v: View
+
+    private lateinit var cvuAlias: TextView
+    private lateinit var amount: EditText
     private lateinit var btnTemp : Button
 
     override fun onCreateView(
@@ -28,23 +38,48 @@ class TransferMoneyFragment : Fragment() {
     ): View? {
 
         v = inflater.inflate(R.layout.fragment_transfer, container, false)
+        cvuAlias = v.findViewById(R.id.inputCbuAlias)
+        amount = v.findViewById(R.id.inputAmount)
         btnTemp = v.findViewById(R.id.btnTransfAmount)
+        rootLayout = v.findViewById(R.id.frameLayout4)
         return v
     }
 
-    override fun onStart() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(TransferMoneyViewModel::class.java)
+
+    }
+
+    override  fun onStart() {
         super.onStart()
 
         btnTemp.setOnClickListener {
-            val action = TransferMoneyFragmentDirections.actionTransferMoneyFragmentToTransaction()
-            v.findNavController().navigate(action)
+
+                viewModel.transfer(cvuAlias.text.toString(), amount.text.toString().toDouble(), this)
+
+            /*val action = TransferMoneyFragmentDirections.actionTransferMoneyFragmentToTransaction()
+            v.findNavController().navigate(action)*/
         }
     }
+
+    fun showError(message : String){
+
+       // Snackbar.make(rootLayout, message , Snackbar.LENGTH_LONG).show()
+
+        val snack: Snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG)
+        val view = snack.view
+        val params = view.layoutParams as FrameLayout.LayoutParams
+        params.gravity = Gravity.TOP
+        view.layoutParams = params
+        snack.show()
+
+    }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(TransferMoneyViewModel::class.java)
         // TODO: Use the ViewModel
     }
-
 }
