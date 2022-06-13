@@ -3,6 +3,7 @@ package com.example.login.repository
 import android.content.ContentValues
 import android.util.Log
 import com.example.login.entity.Account
+import com.example.login.entity.TransactionDetail
 import com.example.login.entity.User
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -72,10 +73,31 @@ class TransferRepository() {
 
             val accountToFb = db.collection("accounts").document(accountTo.CVU)
                 .update("availableAmount", accountTo.availableAmount+amount).await()
+
+            testHistory(amount)
+
         }catch (e: Exception) {
 
         }
 
     }
+
+    suspend fun testHistory(amount:Double){
+
+        try{
+
+            var accountFrom = this.getAccountFrom()
+
+           var txDetail : TransactionDetail = TransactionDetail("transfer", amount, "13/06/2022", "18:55")
+
+
+            val accountFromFb = db.collection("accounts").document(accountFrom.CVU)
+                .update("txHistory", txDetail).await()
+
+        } catch (e: Exception) {
+
+        }
+    }
+
 
 }
