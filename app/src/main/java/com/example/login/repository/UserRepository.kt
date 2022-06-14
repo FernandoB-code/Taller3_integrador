@@ -41,7 +41,7 @@ object UserRepository {
 
     fun createUserAccount(email:String) : Account{
         val cvu = generateRandomCV()
-        var account= Account(email,cvu,"ALIAS", 2000.00, mutableListOf())
+        var account= Account(email,cvu,"ALIAS", 2000.00, listOf())
         db.collection("accounts").document(account.CVU).set(account)
         // var accountRef = account.result.id // asi se pide el id (referencia)
         //return account.result.id

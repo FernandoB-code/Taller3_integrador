@@ -29,8 +29,16 @@ class TransferRepository() {
             for (document in data) {
                 Log.d(ContentValues.TAG, "${document.id} => ${document.data}")
 
+                var actualAccount = document.toObject<Account>()
+
+                actualAccount.toString()
+
                 if(document.toObject<Account>().CVU == cvu) {
+
                     accountList.add(document.toObject<Account>())
+
+
+
                 }
 
 
@@ -39,6 +47,8 @@ class TransferRepository() {
             accountList.toString()
 
         } catch (e: Exception) {
+
+            Log.d("getAccountByCVU", e.message.toString())
 
         }
 
@@ -53,11 +63,27 @@ class TransferRepository() {
         val questionRef = db.collection("users")
 
         try {
+
             var accountOwner= auth.currentUser?.email.toString()
-            val data = questionRef.document(accountOwner).get().await()
-            var accountId = data.toObject<User>()?.accountID.toString()
-            val qRef= db.collection("accounts").document(accountId).get().await()
-            account = qRef.toObject<Account?>()!!
+
+            if(accountOwner != null) {
+
+                val data = questionRef.document(accountOwner).get().await()
+
+                var actualUser = data.toObject<User>()
+
+                if(actualUser != null) {
+
+                    val qRef= db.collection("accounts").document(actualUser.accountID).get().await()
+
+                    if(qRef.exists() && qRef != null) {
+                        account = qRef.toObject<Account>()!!
+                    }
+
+
+                }
+
+            }
 
         } catch (e: Exception) {
 
@@ -88,7 +114,7 @@ class TransferRepository() {
 
             var accountFrom = this.getAccountFrom()
 
-           var txDetail : TransactionDetail = TransactionDetail("transfer", amount, "13/06/2022", "18:55")
+           var txDetail : TransactionDetail = TransactionDetail(amount, "13/06/2022")
 
 
             val accountFromFb = db.collection("accounts").document(accountFrom.CVU)
