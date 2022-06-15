@@ -5,12 +5,17 @@ import android.util.Log
 import com.example.login.entity.Account
 import com.example.login.entity.TransactionDetail
 import com.example.login.entity.User
+import com.example.login.util.enums.txTypeEnum
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.util.*
 
 class TransferRepository() {
 
@@ -99,16 +104,20 @@ class TransferRepository() {
 
             accountFromFb.update("availableAmount", accountFrom.availableAmount-amount).await()
 
-            var transactionDetail : TransactionDetail = TransactionDetail(amount, "15/06/2022")
+            var transactionDetailTO : TransactionDetail = TransactionDetail(txTypeEnum.TRANSFER_TO, amount, LocalDate.now().toString(), LocalTime.now().toString())
 
-            accountFromFb.update("txHistory", FieldValue.arrayUnion(transactionDetail))
+            accountFromFb.update("txHistory", FieldValue.arrayUnion(transactionDetailTO))
 
-
+            //
 
             val accountToFb = db.collection("accounts").document(accountTo.CVU)
-                .update("availableAmount", accountTo.availableAmount+amount).await()
 
-            //testHistory(amount)
+            accountToFb.update("availableAmount", accountTo.availableAmount+amount).await()
+
+            var transactionDetailFROM : TransactionDetail = TransactionDetail(txTypeEnum.TRANSFER_TO, amount, LocalDate.now().toString(), LocalTime.now().toString())
+
+            accountToFb.update("txHistory", FieldValue.arrayUnion(transactionDetailFROM))
+
 
         }catch (e: Exception) {
 
@@ -116,22 +125,5 @@ class TransferRepository() {
 
     }
 
-    suspend fun testHistory(amount:Double){
 
-        try{
-
-            var accountFrom = this.getAccountFrom()
-
-           var txDetail : TransactionDetail = TransactionDetail(amount, "13/06/2022")
-
-
-            val accountFromFb = db.collection("accounts").document(accountFrom.CVU)
-                .update("txHistory", txDetail).await()
-
-        } catch (e: Exception) {
-
-        }
     }
-
-
-}
