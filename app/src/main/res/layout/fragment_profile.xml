@@ -7,55 +7,154 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ProfileFragment">
 
-    <EditText
-        android:id="@+id/userName"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/userDni"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="50dp" />
 
-    <EditText
-        android:id="@+id/emailUser"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userDni" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="50dp" />
 
-    <EditText
-        android:id="@+id/userDni"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="DNI"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/emailUser"
+    <ImageView
+        android:id="@+id/profilepic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="64dp"
+        android:contentDescription="@string/hola"
+        android:src="@drawable/userpic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Perfil"
-        app:layout_constraintBottom_toTopOf="@+id/userName"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="@string/mi_perfil"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilepic" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="278dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="@string/nombre"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/profile" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="278dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="@string/dni"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameProfile" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="278dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="@string/email"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userDni" />
+
+    <EditText
+        android:id="@+id/userNameProfile"
+        android:layout_width="309dp"
+        android:layout_height="48dp"
+        android:autofillHints=""
+        android:background="@drawable/inputlogin"
+        android:defaultFocusHighlightEnabled="false"
+        android:ems="10"
+        android:fontFamily="@font/poppinsbold"
+        android:hint="@string/user_name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="#808080"
+        android:textColorHint="#808080"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/userDni"
+        android:layout_width="309dp"
+        android:layout_height="48dp"
+        android:autofillHints=""
+        android:background="@drawable/inputlogin"
+        android:defaultFocusHighlightEnabled="false"
+        android:ems="10"
+        android:fontFamily="@font/poppinsbold"
+        android:hint="@string/user_dni"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textColor="#808080"
+        android:textColorHint="#808080"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/emailUser"
+        android:layout_width="309dp"
+        android:layout_height="48dp"
+        android:autofillHints=""
+        android:background="@drawable/inputlogin"
+        android:defaultFocusHighlightEnabled="false"
+        android:ems="10"
+        android:fontFamily="@font/poppinsbold"
+        android:hint="@string/user_email"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textColor="#000000"
+        android:textColorHint="#808080"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

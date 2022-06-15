@@ -16,11 +16,25 @@
             android:id="@+id/transactionDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="34sp"
+            android:drawableLeft="@drawable/transfericon"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="transfer.name"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.461" />
+
+        <TextView
+            android:id="@+id/txtMovAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="@string/_0000_00"
+            android:textColor="@color/orange"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

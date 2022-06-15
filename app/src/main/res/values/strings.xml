@@ -14,7 +14,7 @@
     <string name="apellido">Apellido</string>
     <string name="dni">DNI</string>
     <string name="registrarse">Registrarse</string>
-    <string name="ingresa_tu_correo_para_recuperar_la_contrase_a">Ingresa tu correo \n para recuperar la contraseña</string>
+    <string name="ingresa_tu_correo_para_recuperar_la_contrase_a">Ingresa tu correo para \n recuperar la contraseña</string>
     <string name="green_padlock">green padlock</string>
     <string name="recuperar">Recuperar</string>
     <string name="ingresa_el_monto_que_quieras_convertir">Ingresa el monto \n que quieras convertir</string>
@@ -26,4 +26,21 @@
     <string name="monto">Monto</string>
     <string name="fecha">Fecha</string>
     <string name="volver">Volver</string>
+    <string name="cuenta_de_destino">[cuenta de destino]</string>
+    <string name="monto_transferido">[monto transferido]</string>
+    <string name="fecha_de_transaccion">[fecha de transaccion]</string>
+    <string name="compartir">Compartir</string>
+    <string name="mi_alias">Mi Alias</string>
+    <string name="tus_datos">Tus datos</string>
+    <string name="mi_cbu">Mi CBU</string>
+    <string name="numero_de_cuenta_de_destino">[numero de cuenta de destino]</string>
+    <string name="mi_perfil">Mi Perfil</string>
+    <string name="user_name">user.name</string>
+    <string name="user_dni">user.dni</string>
+    <string name="user_email">user.email</string>
+    <string name="transferir">Transferir</string>
+    <string name="cbu_cvu_o_alias">CBU, CVU o Alias</string>
+    <string name="monto_a_transferir">Monto a transferir</string>
+    <string name="_0000_00">0000.00</string>
+    <string name="saldo">SALDO</string>
 </resources>
