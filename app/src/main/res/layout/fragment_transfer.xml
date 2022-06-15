@@ -7,53 +7,121 @@
     android:layout_height="match_parent"
     tools:context=".fragments.TransferMoneyFragment">
 
-    <TextView
-        android:id="@+id/txtTransfer"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="201dp"
-        android:layout_marginBottom="22dp"
-        android:text="TRANSFERIR"
-        app:layout_constraintBottom_toTopOf="@+id/inputCbuAlias"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="50dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="50dp" />
+
+    <ImageView
+        android:id="@+id/imageViewMainLogo7"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="64dp"
+        android:contentDescription="@string/hola"
+        android:src="@drawable/mainlogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/inputAmount"
+    <TextView
+        android:id="@+id/txtTransfer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="97dp"
-        android:layout_marginBottom="139dp"
-        android:ems="10"
-        android:hint="Monto a transferir"
-        android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/btnTransfAmount"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="@string/transferir"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputCbuAlias" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewMainLogo7" />
 
     <EditText
         android:id="@+id/inputCbuAlias"
+        android:layout_width="309dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="51dp"
+        android:autofillHints=""
+        android:background="@drawable/inputrectange"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTransfer"
+        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:labelFor="@id/inputCbuAlias"
+        android:text="@string/cbu_cvu_o_alias"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputCbuAlias" />
+
+
+    <EditText
+        android:id="@+id/inputAmount"
+        android:layout_width="309dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints=""
+        android:background="@drawable/inputrectange"
         android:ems="10"
-        android:hint="CVU, CBU o alias"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/inputAmount"
+        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTransfer" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+    <TextView
+        android:id="@+id/txtInputAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:labelFor="@id/inputAmount"
+        android:text="@string/monto_a_transferir"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputAmount" />
 
     <Button
         android:id="@+id/btnTransfAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:text="TRANSFERIR"
+        android:layout_width="180dp"
+        android:layout_height="48dp"
+        android:background="@drawable/buttonlogin"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="@string/transferir"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:theme="@style/OrangeTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/txtInputAmount"
+        tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
