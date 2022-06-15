@@ -6,6 +6,7 @@ import com.example.login.entity.Account
 import com.example.login.entity.TransactionDetail
 import com.example.login.entity.User
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -95,12 +96,19 @@ class TransferRepository() {
 
         try{
             val accountFromFb = db.collection("accounts").document(accountFrom.CVU)
-                .update("availableAmount", accountFrom.availableAmount-amount).await()
+
+            accountFromFb.update("availableAmount", accountFrom.availableAmount-amount).await()
+
+            var transactionDetail : TransactionDetail = TransactionDetail(amount, "15/06/2022")
+
+            accountFromFb.update("txHistory", FieldValue.arrayUnion(transactionDetail))
+
+
 
             val accountToFb = db.collection("accounts").document(accountTo.CVU)
                 .update("availableAmount", accountTo.availableAmount+amount).await()
 
-            testHistory(amount)
+            //testHistory(amount)
 
         }catch (e: Exception) {
 

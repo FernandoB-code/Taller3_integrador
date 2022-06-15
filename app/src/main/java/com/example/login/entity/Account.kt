@@ -7,7 +7,7 @@ data class Account(
     var CVU: String,
     var alias: String,
     var availableAmount: Double,
-    var txHistory: List<TransactionDetail>
+    var txHistory: List<TransactionDetail>? = null
 
 ){
 
