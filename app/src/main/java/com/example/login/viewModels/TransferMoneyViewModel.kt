@@ -42,7 +42,7 @@ class TransferMoneyViewModel : ViewModel() {
 
                                 if (accountFROM.availableAmount >= amount) {
 
-                                    repository.updateAmount(amount, accountFROM, accountTO)
+                                    repository.transfer(amount, accountFROM, accountTO)
 
                                     //ver como implementar el historial
 
