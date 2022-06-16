@@ -31,6 +31,8 @@ class TransactionFragment : Fragment() {
 
     private lateinit var viewModel: TransactionViewModel
 
+
+
     lateinit var v : View
     lateinit var adapter : TransactionAdapter
     var transactionRepository : TransactionRepository = TransactionRepository()
