@@ -11,12 +11,15 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
 import com.example.login.adapter.TransactionAdapter
 import com.example.login.entity.Account
+import com.example.login.entity.TransactionDetail
 import com.example.login.fragments.viewModels.TransactionViewModel
 import com.example.login.repository.TransactionRepository
 import com.example.login.viewModels.TransferMoneyViewModel
@@ -43,6 +46,10 @@ class TransactionFragment : Fragment() {
     lateinit var recyclerTransaction : RecyclerView
     private lateinit var rootLayout: ConstraintLayout
 
+
+    var txHistoryList : MutableList<TransactionDetail> = mutableListOf()
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -66,12 +73,22 @@ class TransactionFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        viewModel.showData(this)
+        viewModel.getAccountList()
 
-        recyclerTransaction.setHasFixedSize(true)
-        recyclerTransaction.layoutManager = LinearLayoutManager(context)
-        adapter = TransactionAdapter(transactionRepository.transactionList)
-        recyclerTransaction.adapter = adapter
+        viewModel.accountList.observe(viewLifecycleOwner, Observer { result ->
+
+            var txHistoryList = result
+
+            viewModel.showData(this)
+
+            recyclerTransaction.setHasFixedSize(true)
+            recyclerTransaction.layoutManager = LinearLayoutManager(context)
+            adapter = TransactionAdapter(txHistoryList)
+            recyclerTransaction.adapter = adapter
+
+        })
+
+
 
         btnTransf.setOnClickListener {
             val action = TransactionFragmentDirections.actionTransactionToTransferMoneyFragment()

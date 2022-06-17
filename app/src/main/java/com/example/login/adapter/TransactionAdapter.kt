@@ -8,10 +8,11 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
 import com.example.login.entity.Transaction
+import com.example.login.entity.TransactionDetail
 import com.example.login.fragments.TransactionFragmentDirections
 
 
-class TransactionAdapter ( var transactionList : MutableList<Transaction>) : RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
+class TransactionAdapter ( var transactionHistory : MutableList<TransactionDetail>) : RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
 
     class TransactionHolder (v : View) : RecyclerView.ViewHolder(v){
 
@@ -47,17 +48,17 @@ class TransactionAdapter ( var transactionList : MutableList<Transaction>) : Rec
 
 
     override fun onBindViewHolder(holder: TransactionHolder, position: Int) {
-        holder.setAmount(transactionList[position].ammount)
+        holder.setAmount(transactionHistory[position].amount)
 
         holder.getTxItem().setOnClickListener{
-            val action = TransactionFragmentDirections.actionTransactionToDetailTxFragment(transactionList[position].userFrom)
+            val action = TransactionFragmentDirections.actionTransactionToDetailTxFragment(transactionHistory[position].amount.toString())
             holder.itemView.findNavController().navigate(action)
 
         }
     }
 
     override fun getItemCount(): Int {
-        return transactionList.size
+        return transactionHistory.size
     }
 
 

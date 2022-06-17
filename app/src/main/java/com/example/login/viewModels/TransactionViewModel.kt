@@ -8,12 +8,17 @@ import com.example.login.repository.TransactionRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import com.example.login.entity.TransactionDetail
 
 class TransactionViewModel : ViewModel() {
 
     var repository = TransactionRepository()
 
     lateinit var fragment : TransactionFragment
+
+    var accountList = MutableLiveData<MutableList<TransactionDetail>>()
+
 
     @Throws(Exception::class)
     fun showData(fragment: TransactionFragment) {
@@ -32,6 +37,15 @@ class TransactionViewModel : ViewModel() {
                 fragment.showMessage(e.message.toString())
             }
         }
+    }
+
+    fun getAccountList(){
+
+        viewModelScope.launch(Dispatchers.Main) {
+            var account = repository.getAccountFrom()
+            accountList.value = account.txHistory
+        }
+
     }
 
 }

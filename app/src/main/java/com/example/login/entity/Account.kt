@@ -7,7 +7,7 @@ data class Account(
     var CVU: String,
     var alias: String,
     var availableAmount: Double,
-    var txHistory: List<TransactionDetail>
+    var txHistory: MutableList<TransactionDetail>
 
 
 ){
@@ -17,7 +17,7 @@ data class Account(
         "",
         "",
         0.0,
-        listOf()
+        mutableListOf()
 
     )
 
