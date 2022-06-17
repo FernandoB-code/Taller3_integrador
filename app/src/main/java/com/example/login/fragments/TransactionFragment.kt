@@ -64,7 +64,7 @@ class TransactionFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        var amount = viewModel.showData(this)
+        viewModel.showData(this)
 
         recyclerTransaction.setHasFixedSize(true)
         recyclerTransaction.layoutManager = LinearLayoutManager(context)

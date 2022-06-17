@@ -28,8 +28,8 @@
         android:layout_marginTop="64dp"
         android:contentDescription="@string/hola"
         android:src="@drawable/mainlogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline14"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppinssemibold"
-        android:text="@string/tus_datos"
+        android:text="@string/mis_datos"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -48,28 +48,22 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewMainLogo6" />
 
     <TextView
-        android:id="@+id/detDestino4"
+        android:id="@+id/depositAccountAlias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginEnd="272dp"
         android:fontFamily="@font/poppinssemibold"
         android:text="[mi alias]"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toBottomOf="@+id/line" />
 
     <TextView
         android:id="@+id/line"
         android:layout_width="271dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="88dp"
+        android:layout_height="10dp"
         android:background="@drawable/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
-        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintBottom_toTopOf="@+id/depositAccountAlias"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toBottomOf="@+id/txtAlias2" />
 
     <TextView
@@ -79,37 +73,29 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppinssemibold"
         android:labelFor="@id/inputAmountConv"
-        android:text="@string/mi_alias"
+        android:text="Alias"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detDestino3" />
+        app:layout_constraintBottom_toTopOf="@+id/line"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toBottomOf="@+id/depositAccountCbu" />
 
     <TextView
-        android:id="@+id/detDestino3"
+        android:id="@+id/depositAccountCbu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="281dp"
         android:fontFamily="@font/poppinssemibold"
         android:text="[mi cbu]"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toBottomOf="@+id/line6" />
 
     <TextView
         android:id="@+id/line6"
         android:layout_width="271dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="88dp"
+        android:layout_height="10dp"
         android:background="@drawable/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
-        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toBottomOf="@+id/txtAlias" />
 
     <TextView
@@ -119,25 +105,21 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppinssemibold"
         android:labelFor="@id/inputAmountConv"
-        android:text="Mi CBU"
+        android:text="@string/cbu"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detDestino2" />
+        app:layout_constraintBottom_toTopOf="@+id/line6"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toBottomOf="@+id/depositUserName" />
 
     <TextView
-        android:id="@+id/detDestino2"
+        android:id="@+id/depositUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="244dp"
         android:fontFamily="@font/poppinssemibold"
         android:text="[mi nombre]"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toBottomOf="@+id/line7" />
 
     <TextView
@@ -147,24 +129,20 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/poppinssemibold"
         android:labelFor="@id/inputAmountConv"
-        android:text="Mi Nombre"
+        android:text="@string/nombre"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.177"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/line7"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toBottomOf="@+id/txtDepMoney" />
 
     <TextView
         android:id="@+id/line7"
         android:layout_width="271dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="88dp"
+        android:layout_height="10dp"
         android:background="@drawable/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
-        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintBottom_toTopOf="@+id/depositUserName"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toBottomOf="@+id/txtNameIngreso" />
 
     <Button
@@ -182,7 +160,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detDestino4"
+        app:layout_constraintTop_toBottomOf="@+id/depositAccountAlias"
         tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
