@@ -43,4 +43,6 @@
     <string name="monto_a_transferir">Monto a transferir</string>
     <string name="_0000_00">0000.00</string>
     <string name="saldo">SALDO</string>
+    <string name="mis_datos">Mis datos</string>
+    <string name="cbu">CBU</string>
 </resources>

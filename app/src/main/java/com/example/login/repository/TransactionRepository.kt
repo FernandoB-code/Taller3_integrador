@@ -60,4 +60,22 @@ class TransactionRepository {
         }
         return account
     }
+
+    suspend fun getUserName(): String {
+        var userName : String = ""
+        val questionRef = db.collection("users")
+        try {
+            var accountOwner= auth.currentUser?.email.toString()
+            if(accountOwner != null) {
+                val data = questionRef.document(accountOwner).get().await()
+                var actualUser = data.toObject<User>()
+                if(actualUser != null) {
+                    userName = actualUser.name
+                    }
+                }
+        } catch (e: Exception) {
+            Log.v("Error", e.toString())
+        }
+        return userName
+    }
 }
