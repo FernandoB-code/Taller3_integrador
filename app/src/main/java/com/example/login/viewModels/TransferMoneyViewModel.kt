@@ -2,9 +2,11 @@ package com.example.login.viewModels
 
 import android.util.Log
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.login.entity.Account
+import com.example.login.entity.TransactionDetail
 import com.example.login.fragments.TransferMoneyFragment
 import com.example.login.repository.TransferRepository
 import com.example.login.repository.UserRepository
@@ -17,6 +19,8 @@ class TransferMoneyViewModel : ViewModel() {
     var repository = TransferRepository()
 
     lateinit var fragment : TransferMoneyFragment
+
+
 
     @Throws(Exception::class)
     fun transfer(cvuAlias: String?, amount: Double, fragment: TransferMoneyFragment) {

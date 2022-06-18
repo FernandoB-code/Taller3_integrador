@@ -24,7 +24,10 @@ class DetailTxFragment : Fragment() {
     private lateinit var v: View
     private lateinit var btnTemp : Button
 
-    private lateinit var textView4: TextView
+    private lateinit var accountDestiny: TextView
+    private lateinit var accountAmount: TextView
+    private lateinit var date: TextView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,10 +41,21 @@ class DetailTxFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        var txType = DetailTxFragmentArgs.fromBundle(requireArguments()).detalle
-         Snackbar.make(v,txType,Snackbar.LENGTH_SHORT).show()
-        textView4 = v.findViewById(R.id.textView4)
-        textView4.text = txType
+        var accountDestinyTEXT = DetailTxFragmentArgs.fromBundle(requireArguments()).accountDestiny
+        var amountTEXT = DetailTxFragmentArgs.fromBundle(requireArguments()).amount
+        var dateTx = DetailTxFragmentArgs.fromBundle(requireArguments()).date
+
+        accountDestiny = v.findViewById(R.id.detDestino)
+        accountDestiny.text = accountDestinyTEXT
+
+        accountAmount = v.findViewById(R.id.detMonto)
+        accountAmount.text = amountTEXT
+
+        date = v.findViewById(R.id.detFecha)
+        date.text = dateTx
+
+
+
 
         btnTemp.setOnClickListener {
             val action = DetailTxFragmentDirections.actionDetailTxFragmentToTransaction()

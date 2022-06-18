@@ -104,7 +104,7 @@ class TransferRepository() {
 
             accountFromFb.update("availableAmount", accountFrom.availableAmount-amount).await()
 
-            var transactionDetailTO : TransactionDetail = TransactionDetail(txTypeEnum.TRANSFER_SEND, amount, LocalDate.now().toString(), LocalTime.now().toString()) //save tx history
+            var transactionDetailTO : TransactionDetail = TransactionDetail(txTypeEnum.TRANSFER_SEND, accountTo.CVU,accountFrom.CVU, amount, LocalDate.now().toString(), LocalTime.now().toString()) //save tx history
 
             accountFromFb.update("txHistory", FieldValue.arrayUnion(transactionDetailTO))
 
@@ -114,7 +114,7 @@ class TransferRepository() {
 
             accountToFb.update("availableAmount", accountTo.availableAmount+amount).await()
 
-            var transactionDetailFROM : TransactionDetail = TransactionDetail(txTypeEnum.TRANSFER_RESIVED, amount, LocalDate.now().toString(), LocalTime.now().toString())
+            var transactionDetailFROM : TransactionDetail = TransactionDetail(txTypeEnum.TRANSFER_RESIVED,accountTo.CVU,accountFrom.CVU, amount, LocalDate.now().toString(), LocalTime.now().toString())
 
             accountToFb.update("txHistory", FieldValue.arrayUnion(transactionDetailFROM)) //save tx history
 
