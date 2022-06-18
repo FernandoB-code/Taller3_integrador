@@ -1,7 +1,9 @@
 package com.example.login.util.enums
 
-enum class txTypeEnum {
+enum class txTypeEnum(val type : String) {
 
-    DEFAULT,TRANSFER_SEND, TRANSFER_RESIVED
+    DEFAULT("Default"),TRANSFER_SEND("Enviado"), TRANSFER_RESIVED("Recibido")
+
+
 
 }

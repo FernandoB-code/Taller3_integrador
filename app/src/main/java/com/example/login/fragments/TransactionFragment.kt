@@ -1,9 +1,7 @@
 package com.example.login.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,18 +9,17 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.MutableLiveData
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
 import com.example.login.adapter.TransactionAdapter
-import com.example.login.entity.Account
 import com.example.login.entity.TransactionDetail
 import com.example.login.fragments.viewModels.TransactionViewModel
 import com.example.login.repository.TransactionRepository
-import com.example.login.viewModels.TransferMoneyViewModel
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -80,11 +77,18 @@ class TransactionFragment : Fragment() {
             var txHistoryList = result
 
             viewModel.showData(this)
-
             recyclerTransaction.setHasFixedSize(true)
             recyclerTransaction.layoutManager = LinearLayoutManager(context)
+
+            val mLinearLayoutManager = LinearLayoutManager(context)
+            recyclerTransaction.setLayoutManager(mLinearLayoutManager)
+
+            mLinearLayoutManager.reverseLayout = true
+           // mLinearLayoutManager.stackFromEnd = false
             adapter = TransactionAdapter(txHistoryList)
             recyclerTransaction.adapter = adapter
+
+            recyclerTransaction.scrollToPosition(txHistoryList.size - 1)
 
         })
 
