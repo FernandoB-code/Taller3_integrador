@@ -23,7 +23,7 @@ class TransactionAdapter ( var transactionHistory : MutableList<TransactionDetai
             }
 
         fun setAmount(amount: Double){
-            var txtAmount : TextView = view.findViewById(R.id.transactionDetail)
+            var txtAmount : TextView = view.findViewById(R.id.txtMovAmount)
             txtAmount.text = amount.toString();
         }
 
@@ -49,6 +49,7 @@ class TransactionAdapter ( var transactionHistory : MutableList<TransactionDetai
 
     override fun onBindViewHolder(holder: TransactionHolder, position: Int) {
         holder.setAmount(transactionHistory[position].amount)
+        holder.setTxtType(transactionHistory[position].transactionType.toString())
 
         holder.getTxItem().setOnClickListener{
             val action = TransactionFragmentDirections.actionTransactionToDetailTxFragment(transactionHistory[position].accountTO, transactionHistory[position].amount.toString(), transactionHistory[position].date)
@@ -60,6 +61,5 @@ class TransactionAdapter ( var transactionHistory : MutableList<TransactionDetai
     override fun getItemCount(): Int {
         return transactionHistory.size
     }
-
 
 }
