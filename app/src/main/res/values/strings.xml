@@ -45,4 +45,5 @@
     <string name="saldo">SALDO</string>
     <string name="mis_datos">Mis datos</string>
     <string name="cbu">CBU</string>
+    <string name="show_password">Show password</string>
 </resources>
