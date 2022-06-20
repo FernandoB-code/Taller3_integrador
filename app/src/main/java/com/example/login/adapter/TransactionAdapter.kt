@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.R
-import com.example.login.entity.Transaction
 import com.example.login.entity.TransactionDetail
 import com.example.login.fragments.TransactionFragmentDirections
 
