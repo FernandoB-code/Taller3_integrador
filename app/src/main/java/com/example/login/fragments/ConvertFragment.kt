@@ -2,6 +2,7 @@ package com.example.login.fragments
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,8 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login.R
+import com.example.login.adapter.TransactionAdapter
 import com.example.login.entity.APIService
 import com.example.login.viewModels.ConvertViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -57,11 +61,14 @@ class ConvertFragment : Fragment() {
         super.onStart()
 
         btnTemp.setOnClickListener {
-            val action = ConvertFragmentDirections.actionConvertFragmentToTransaction()
-            v.findNavController().navigate(action)
-            viewModel.searchByAmount(inpAmount.inputType)
-            showAmount.text = viewModel.sendMoney().toString()
 
+            var amount = inpAmount.text
+            viewModel.searchByAmount(amount.toString().toDouble()).toString()
+
+            viewModel.convertionResult.observe(viewLifecycleOwner, Observer { result ->
+             showAmount.text =  viewModel.convertionResult.value.toString()
+
+            })
         }
     }
 
@@ -76,8 +83,6 @@ class ConvertFragment : Fragment() {
 
 
     fun showMessage(message : String){
-
-
 
         val snack: Snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG)
         val view = snack.view

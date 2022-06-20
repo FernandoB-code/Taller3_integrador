@@ -12,6 +12,6 @@ data class Convert(
     var time_next_update_utc:String,
     var base_code: String,
     var target_code: String,
-    var conversion_rate: DecimalFormat,
+    var conversion_rate: Number,
     var conversion_result: Number
 )
