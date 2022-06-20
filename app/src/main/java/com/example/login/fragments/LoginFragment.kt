@@ -3,12 +3,15 @@ package com.example.login.fragments
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import com.example.login.R
@@ -28,6 +31,7 @@ class LoginFragment : Fragment() {
     private lateinit var inputPassword: EditText
     private lateinit var btnNewProfile : Button
     private lateinit var btnForgotPw : Button
+    private lateinit var btnShowPassword : ImageButton
     private lateinit var rootLayout: ConstraintLayout
 
     companion object {
@@ -40,20 +44,18 @@ class LoginFragment : Fragment() {
     //var userRepository : UserRepository = UserRepository()
     var userRepositoryFireBase: UserRepositoryFirebase = UserRepositoryFirebase()*/
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         v = inflater.inflate(R.layout.login_fragment, container, false)
-
         btnLogin = v.findViewById(R.id.btnNavigate)
         inputEmail = v.findViewById(R.id.inputEmail)
         inputPassword = v.findViewById(R.id.inputPassword)
         btnNewProfile = v.findViewById(R.id.btnSign)
         btnForgotPw = v.findViewById(R.id.btnForgotPw)
+        btnShowPassword = v.findViewById(R.id.show_pass_btn)
         rootLayout = v.findViewById(R.id.frameLayout)
-
         return v
     }
 
@@ -63,6 +65,7 @@ class LoginFragment : Fragment() {
     }
 
     override fun onStart() {
+
         super.onStart()
 
         //Va a la pantalla de Registrate
@@ -78,7 +81,6 @@ class LoginFragment : Fragment() {
             val action2 = LoginFragmentDirections.actionFragment1ToRecoveryPasswordFragment()
             v.findNavController().navigate(action2)
         }
-
 
         //Pantalla de login
         btnLogin.setOnClickListener {
@@ -107,14 +109,32 @@ class LoginFragment : Fragment() {
                 Snackbar.make(rootLayout, "Email o Contraseña incorrecta", Snackbar.LENGTH_LONG)
                     .show()
             }
-
         }
+
+        //Show or hide password text
+        btnShowPassword.setOnClickListener {
+            showHidePassword()
+        }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         //viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    fun showHidePassword(){
+        if(inputPassword.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+            btnShowPassword.setImageResource(R.drawable.hidepass)
+            //Show Password
+            inputPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        }
+        else{
+            btnShowPassword.setImageResource(R.drawable.showpass)
+            //Hide Password
+            inputPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        }
     }
 }
 
