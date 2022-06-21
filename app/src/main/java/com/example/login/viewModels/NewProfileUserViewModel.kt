@@ -3,11 +3,13 @@ package com.example.login.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.login.entity.User
+import com.example.login.repository.AccountRepository
 import com.example.login.repository.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 
 class NewProfileUserViewModel : ViewModel() {
     var success: MutableLiveData<String> = MutableLiveData()
+    var accountRepository = AccountRepository()
 
     fun registerUser(
         name:String?,
@@ -19,7 +21,7 @@ class NewProfileUserViewModel : ViewModel() {
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(mail, password)
                 .addOnSuccessListener {
                     val id = FirebaseAuth.getInstance().currentUser?.email.toString()
-                    val account = UserRepository.createUserAccount(mail)
+                    val account = accountRepository.createUserAccount(mail)
                     val accountId = account.CVU
                     UserRepository.saveUser(User(id,name, dni, mail, accountId), success)
 
