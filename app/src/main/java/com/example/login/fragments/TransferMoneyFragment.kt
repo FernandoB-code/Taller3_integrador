@@ -56,7 +56,11 @@ class TransferMoneyFragment : Fragment() {
 
         btnTemp.setOnClickListener {
 
+            if (amount.text.isNotEmpty() && cvuAlias.text.isNotEmpty()) {
                 viewModel.transfer(cvuAlias.text.toString(), amount.text.toString().toDouble(), this)
+            } else {
+                Snackbar.make(rootLayout,"Debe completar los campos", Snackbar.LENGTH_LONG).show()
+            }
 
             /*val action = TransferMoneyFragmentDirections.actionTransferMoneyFragmentToTransaction()
             v.findNavController().navigate(action)*/
@@ -64,14 +68,12 @@ class TransferMoneyFragment : Fragment() {
     }
 
     fun showMessage(message : String){
-
         val snack: Snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG)
         val view = snack.view
         val params = view.layoutParams as FrameLayout.LayoutParams
         params.gravity = Gravity.TOP
         view.layoutParams = params
         snack.show()
-
     }
 
 

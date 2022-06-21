@@ -58,18 +58,24 @@ class ConvertFragment : Fragment() {
     }
 
     override fun onStart() {
+
         super.onStart()
 
         btnTemp.setOnClickListener {
 
             var amount = inpAmount.text
-            viewModel.searchByAmount(amount.toString().toDouble()).toString()
 
-            viewModel.convertionResult.observe(viewLifecycleOwner, Observer { result ->
-             showAmount.text =  viewModel.convertionResult.value.toString()
+            if (amount.isNotEmpty()) {
+                viewModel.searchByAmount(amount.toString().toDouble()).toString()
+                viewModel.convertionResult.observe(viewLifecycleOwner, Observer { result ->
+                    showAmount.text =  viewModel.convertionResult.value.toString()
+                })
+            }else {
+                Snackbar.make(rootLayout, "Debe ingresar un monto", Snackbar.LENGTH_LONG).show()
+            }
 
-            })
         }
+
     }
 
 

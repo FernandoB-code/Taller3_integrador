@@ -17,7 +17,6 @@
     <string name="ingresa_tu_correo_para_recuperar_la_contrase_a">Ingresa tu correo para \n recuperar la contraseña</string>
     <string name="green_padlock">green padlock</string>
     <string name="recuperar">Recuperar</string>
-    <string name="ingresa_el_monto_que_quieras_convertir">Ingresa el monto \n que quieras convertir</string>
     <string name="convertir">Convertir</string>
     <string name="pesos">Pesos</string>
     <string name="d_lares">Dólares</string>
@@ -46,4 +45,7 @@
     <string name="mis_datos">Mis datos</string>
     <string name="cbu">CBU</string>
     <string name="show_password">Show password</string>
+    <string name="ingresa_el_monto_en_pesos_que_quieras_convertir">Ingresa el monto en pesos\n que quieras convertir</string>
+    <string name="movimientos">MOVIMIENTOS</string>
+    <string name="signo_pesos">$</string>
 </resources>
