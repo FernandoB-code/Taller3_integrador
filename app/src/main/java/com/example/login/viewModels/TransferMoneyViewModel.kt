@@ -1,22 +1,21 @@
 package com.example.login.viewModels
 
-import android.util.Log
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.login.entity.Account
-import com.example.login.entity.TransactionDetail
 import com.example.login.fragments.TransferMoneyFragment
-import com.example.login.repository.TransferRepository
-import com.example.login.repository.UserRepository
-import com.google.android.material.snackbar.Snackbar
+import com.example.login.repository.AccountRepository
+import com.example.login.repository.TransactionRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TransferMoneyViewModel : ViewModel() {
 
-    var repository = TransferRepository()
+    var transactionRepository = TransactionRepository()
+
+    var accountRepository = AccountRepository()
+
+
 
     lateinit var fragment : TransferMoneyFragment
 
@@ -32,7 +31,7 @@ class TransferMoneyViewModel : ViewModel() {
                     if (!cvuAlias.isNullOrEmpty() && amount > 0) {
 
 
-                        var accountsList : MutableList<Account> = repository.getAccountByCVU(cvuAlias)
+                        var accountsList : MutableList<Account> = accountRepository.getAccountByCVU(cvuAlias)
 
                         if (accountsList.size != 0) { // valida la lista tenga un valor, si no, no encontró la cuenta
 
@@ -40,35 +39,30 @@ class TransferMoneyViewModel : ViewModel() {
 
                             if (accountTO != null) {
 
-                                var accountFROM: Account = repository.getAccountFrom()
+                                var accountFROM: Account = accountRepository.getAccountFrom()
 
                                 accountFROM.toString()
 
                                 if (accountFROM.availableAmount >= amount) {
 
-                                    repository.transfer(amount, accountFROM, accountTO)
-
-                                    //ver como implementar el historial
+                                    transactionRepository.transfer(amount, accountFROM, accountTO)
 
                                 } else {
 
-                                    // error saldo insuficiente
                                     throw Exception("No tiene saldo suficiente")
                                 }
                             }
                         } else {
 
-                            // // error no existe la cuenta con el CVU xxxxxxxxxxxxxxxxxxxxxx
                             throw Exception("No existe la cuenta con ese CVU")
                         }
                     } else {
 
-                        // // CVU null o vacio
                         throw Exception("Datos invalidos")
 
                     }
 
-                    fragment.showMessage("Transferencia realizada con exito")
+                fragment.showMessage("Transferencia realizada con exito")
 
                 } catch (e : Exception) {
 

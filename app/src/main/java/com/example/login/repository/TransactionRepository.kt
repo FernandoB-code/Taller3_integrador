@@ -1,81 +1,46 @@
 package com.example.login.repository
 
-import android.content.ContentValues
-import android.icu.text.SimpleDateFormat
-import android.util.Log
+
 import com.example.login.entity.Account
-import com.example.login.entity.Transaction
 import com.example.login.entity.TransactionDetail
-import com.example.login.entity.User
 import com.example.login.util.enums.txTypeEnum
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
-import java.util.*
+import java.time.LocalDate
+import java.time.LocalTime
+
 
 class TransactionRepository {
 
     private val db = Firebase.firestore
-    private val auth = Firebase.auth
 
-    var transactionList : MutableList<Transaction> = mutableListOf()
+    suspend fun transfer(amount:Double, accountFrom:Account, accountTo:Account){
 
-    init {
+        try{
+            val accountFromFB = db.collection("accounts").document(accountFrom.CVU)
 
-        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-        val currentDate = sdf.format(Date())
-        println(currentDate)
+            accountFromFB.update("availableAmount", accountFrom.availableAmount-amount).await()
 
-        transactionList.add(Transaction("a1b2c3","b1c2d3",150.10, currentDate.toString()))
-        transactionList.add(Transaction("a1b2c3","b1c2d3",160.10,currentDate.toString()))
-        transactionList.add(Transaction("a1b2c3","b1c2d3",170.10,currentDate.toString()))
-        /*transactionList.add(Transaction(160.10, "TRANSFER CVU"))
-        transactionList.add(Transaction(170.10, "TRANSFER ALIAS"))
-        transactionList.add(Transaction(180.10, "TRANSFER"))
-        transactionList.add(Transaction(190.10, "TRANSFER"))
-        transactionList.add(Transaction(200.10, "TRANSFER"))*/
+            var transactionDetailTO : TransactionDetail = TransactionDetail(txTypeEnum.TRANSFER_SEND, accountTo.CVU,accountFrom.CVU, amount, LocalDate.now().toString(), LocalTime.now().toString()) //save tx history
 
-    }
+            accountFromFB.update("txHistory", FieldValue.arrayUnion(transactionDetailTO))
 
-    suspend fun getAccountFrom(): Account {
-        var account = Account()
-        val questionRef = db.collection("users")
-        try {
-            var accountOwner= auth.currentUser?.email.toString()
-            if(accountOwner != null) {
-                val data = questionRef.document(accountOwner).get().await()
-                var actualUser = data.toObject<User>()
-                if(actualUser != null) {
-                    val qRef= db.collection("accounts").document(actualUser.accountID).get().await()
-                    if(qRef.exists() && qRef != null) {
-                        account = qRef.toObject<Account>()!!
-                    }
-                }
-            }
-        } catch (e: Exception) {
-            Log.v("Error", e.toString())
+            //
+
+            val accountToFB = db.collection("accounts").document(accountTo.CVU)
+
+            accountToFB.update("availableAmount", accountTo.availableAmount+amount).await()
+
+            var transactionDetailFROM : TransactionDetail = TransactionDetail(txTypeEnum.TRANSFER_RESIVED,accountTo.CVU,accountFrom.CVU, amount, LocalDate.now().toString(), LocalTime.now().toString())
+
+            accountToFB.update("txHistory", FieldValue.arrayUnion(transactionDetailFROM)) //save tx history
+
+
+        }catch (e: Exception) {
+
         }
-        return account
-    }
 
-    suspend fun getUserName(): String {
-        var userName : String = ""
-        val questionRef = db.collection("users")
-        try {
-            var accountOwner= auth.currentUser?.email.toString()
-            if(accountOwner != null) {
-                val data = questionRef.document(accountOwner).get().await()
-                var actualUser = data.toObject<User>()
-                if(actualUser != null) {
-                    userName = actualUser.name
-                    }
-                }
-        } catch (e: Exception) {
-            Log.v("Error", e.toString())
-        }
-        return userName
     }
 }

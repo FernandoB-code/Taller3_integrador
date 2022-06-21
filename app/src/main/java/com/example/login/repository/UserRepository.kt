@@ -1,5 +1,6 @@
 package com.example.login.repository
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.login.entity.Account
 import com.example.login.entity.User
@@ -10,11 +11,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.tasks.await
 
 object UserRepository {
 
     private val auth = Firebase.auth
-    //private val db = Firebase.firestore
+
 
     private val db: FirebaseFirestore by lazy { Firebase.firestore }
 
@@ -39,24 +41,21 @@ object UserRepository {
             }
     }
 
-    fun createUserAccount(email:String) : Account{
-        val cvu = generateRandomCV()
-        var account= Account(email,cvu,"ALIAS", 2000.00, mutableListOf())
-        db.collection("accounts").document(account.CVU).set(account)
-        // var accountRef = account.result.id // asi se pide el id (referencia)
-        //return account.result.id
-        return account
+    suspend fun getUserName(): String {
+        var userName : String = ""
+        val questionRef = db.collection("users")
+        try {
+            var accountOwner= auth.currentUser?.email.toString()
+            if(accountOwner != null) {
+                val data = questionRef.document(accountOwner).get().await()
+                var actualUser = data.toObject<User>()
+                if(actualUser != null) {
+                    userName = actualUser.name
+                }
+            }
+        } catch (e: Exception) {
+            Log.v("Error", e.toString())
+        }
+        return userName
     }
-
-    fun generateRandomCV(): String {
-        var length = 22
-        val charset = ('0'..'9')
-        return List(length) { charset.random() }
-            .joinToString("")
-    }
-
-    fun getEmail() : String{
-        return auth.currentUser?.email.toString()
-    }
-
 }

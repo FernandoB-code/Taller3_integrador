@@ -1,11 +1,9 @@
 package com.example.login.viewModels
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.login.entity.APIService
-import com.example.login.entity.TransactionDetail
+import com.example.login.services.APIService
 import com.example.login.fragments.ConvertFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

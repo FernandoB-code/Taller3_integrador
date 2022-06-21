@@ -7,7 +7,9 @@ import com.example.login.entity.Account
 import com.example.login.entity.User
 import com.example.login.fragments.DepositMoneyFragment
 import com.example.login.fragments.TransactionFragment
+import com.example.login.repository.AccountRepository
 import com.example.login.repository.TransactionRepository
+import com.example.login.repository.UserRepository
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
@@ -17,7 +19,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class DepositMoneyViewModel : ViewModel() {
-    var repository = TransactionRepository()
+
+    var transactionRepository = TransactionRepository()
+    var accountRepository = AccountRepository()
+    var userRepository = UserRepository
 
     private val db = Firebase.firestore
     private val auth = Firebase.auth
@@ -30,7 +35,7 @@ class DepositMoneyViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.Main) {
 
             try {
-                var account = repository.getAccountFrom()
+                var account = accountRepository.getAccountFrom()
 
                 if (account != null) {
                     var cbu = account.CVU
@@ -51,7 +56,7 @@ class DepositMoneyViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.Main) {
 
             try {
-                var userName = repository.getUserName()
+                var userName = userRepository.getUserName()
 
                 if (userName.isNotEmpty()) {
                     fragment.setUserName(userName)

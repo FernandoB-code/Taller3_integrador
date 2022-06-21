@@ -12,8 +12,6 @@ data class User(
     var name: String,
     var dni: String,
     var email: String,
-    //var password: String,
-    //var account: Account?
     var accountID: String
 
     )
@@ -26,13 +24,6 @@ data class User(
             "",
             ""
            )
-
-    //Falta traer la cuenta
-    fun transfer(transferRequest : TransferRequest){
-        //account?.transfer(transferRequest)
-        //test merge
-    }
-
 
 
 }
