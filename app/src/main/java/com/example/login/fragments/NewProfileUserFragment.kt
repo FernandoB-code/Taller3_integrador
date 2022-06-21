@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import com.example.login.R
 import com.example.login.activities.MainActivity
@@ -30,6 +31,7 @@ class NewProfileUserFragment : Fragment() {
     private lateinit var userMail: TextView
     private lateinit var userId: TextView
     private lateinit var btnSignUp : Button
+    private lateinit var rootLayout : ConstraintLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +45,7 @@ class NewProfileUserFragment : Fragment() {
         userMail = v.findViewById(R.id.emailAdress)
         userId = v.findViewById(R.id.userId)
         btnSignUp = v.findViewById(R.id.btnSignUp)
+        rootLayout = v.findViewById(R.id.registrate)
         return v
 
     }
@@ -59,18 +62,23 @@ class NewProfileUserFragment : Fragment() {
     }
 
     override fun onStart() {
+
         super.onStart()
 
         btnSignUp.setOnClickListener {
-            viewModel.registerUser(
-                userName.text.toString(),
-                userPassword.text.toString(),
-                userMail.text.toString(),
-                userId.text.toString()
-            )
+
+            if (userName.text.isNotEmpty() && userPassword.text.isNotEmpty() && userMail.text.isNotEmpty() && userId.text.isNotEmpty() ) {
+                viewModel.registerUser(
+                    userName.text.toString(),
+                    userPassword.text.toString(),
+                    userMail.text.toString(),
+                    userId.text.toString()
+                )
+            } else {
+                Snackbar.make(rootLayout, "Datos incompletos", Snackbar.LENGTH_LONG).show()
+            }
 
         }
-
 
     }
 
