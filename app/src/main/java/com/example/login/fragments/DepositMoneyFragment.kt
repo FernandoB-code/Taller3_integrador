@@ -1,17 +1,17 @@
 package com.example.login.fragments
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.navigation.findNavController
 import com.example.login.R
 import com.example.login.viewModels.DepositMoneyViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -23,7 +23,6 @@ class DepositMoneyFragment : Fragment() {
     }
 
     private lateinit var viewModel: DepositMoneyViewModel
-
     private lateinit var v: View
     private lateinit var textName : TextView
     private lateinit var textCbu : TextView
@@ -50,38 +49,23 @@ class DepositMoneyFragment : Fragment() {
     }
 
     override fun onStart() {
+
         super.onStart()
 
-        viewModel.setAccountDetail(this)
-        viewModel.setUserName(this)
+        viewModel.setAccountDetail(textCbu, textAlias)
+        viewModel.setUserName(textName)
 
         btnTemp.setOnClickListener {
-            val action = DepositMoneyFragmentDirections.actionDepositMoneyFragmentToTransaction()
-            v.findNavController().navigate(action)
+            //val action = DepositMoneyFragmentDirections.actionDepositMoneyFragmentToTransaction()
+            //v.findNavController().navigate(action)
+            val depositData = "Nombre: " +textName.text + "\nCBU: " + textCbu.text + "\nAlias: " + textAlias.text
+            val clipboard = activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("datos", depositData)
+            clipboard.setPrimaryClip(clip)
+            Snackbar.make(rootLayout,"Datos copiados", Snackbar.LENGTH_LONG).show()
         }
 
-
     }
-
-    fun showMessage(message : String){
-
-        val snack: Snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG)
-        val view = snack.view
-        val params = view.layoutParams as FrameLayout.LayoutParams
-        params.gravity = Gravity.TOP
-        view.layoutParams = params
-        snack.show()
-    }
-
-    fun setCbuAlias(cbu : String, alias : String) {
-        this.textCbu.text = cbu
-        this.textAlias.text = alias
-    }
-
-    fun setUserName (name : String) {
-        this.textName.text = name
-    }
-
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

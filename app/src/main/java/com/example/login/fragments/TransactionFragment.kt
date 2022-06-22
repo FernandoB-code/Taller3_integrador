@@ -76,7 +76,7 @@ class TransactionFragment : Fragment() {
 
             var txHistoryList = result
 
-            viewModel.showData(this)
+            viewModel.showData(txtAmountAccount)
             recyclerTransaction.setHasFixedSize(true)
             recyclerTransaction.layoutManager = LinearLayoutManager(context)
 
@@ -109,22 +109,6 @@ class TransactionFragment : Fragment() {
             v.findNavController().navigate(action1)
         }
 
-
-    }
-
-    fun showMessage(message : String){
-
-        val snack: Snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG)
-        val view = snack.view
-        val params = view.layoutParams as FrameLayout.LayoutParams
-        params.gravity = Gravity.TOP
-        view.layoutParams = params
-        snack.show()
-
-    }
-
-    fun setAmount(amount : String) {
-        this.txtAmountAccount.text = amount
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
