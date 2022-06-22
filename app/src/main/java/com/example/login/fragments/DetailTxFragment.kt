@@ -23,10 +23,10 @@ class DetailTxFragment : Fragment() {
 
     private lateinit var v: View
     private lateinit var btnTemp : Button
-
     private lateinit var accountDestiny: TextView
     private lateinit var accountAmount: TextView
     private lateinit var date: TextView
+    private lateinit var type : TextView
 
 
     override fun onCreateView(
@@ -44,6 +44,7 @@ class DetailTxFragment : Fragment() {
         var accountDestinyTEXT = DetailTxFragmentArgs.fromBundle(requireArguments()).accountDestiny
         var amountTEXT = DetailTxFragmentArgs.fromBundle(requireArguments()).amount
         var dateTx = DetailTxFragmentArgs.fromBundle(requireArguments()).date
+        var typeText = DetailTxFragmentArgs.fromBundle(requireArguments()).type
 
         accountDestiny = v.findViewById(R.id.detDestino)
         accountDestiny.text = accountDestinyTEXT
@@ -54,8 +55,8 @@ class DetailTxFragment : Fragment() {
         date = v.findViewById(R.id.detFecha)
         date.text = dateTx
 
-
-
+        type = v.findViewById(R.id.detTipo)
+        type.text = typeText
 
         btnTemp.setOnClickListener {
             val action = DetailTxFragmentDirections.actionDetailTxFragmentToTransaction()
