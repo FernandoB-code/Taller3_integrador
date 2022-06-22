@@ -51,7 +51,7 @@ class TransactionAdapter ( var transactionHistory : MutableList<TransactionDetai
         holder.setTxtType(transactionHistory[position].transactionType.type)
 
         holder.getTxItem().setOnClickListener{
-            val action = TransactionFragmentDirections.actionTransactionToDetailTxFragment(transactionHistory[position].accountTO, transactionHistory[position].amount.toString(), transactionHistory[position].date)
+            val action = TransactionFragmentDirections.actionTransactionToDetailTxFragment(transactionHistory[position].accountTO, transactionHistory[position].amount.toString(), transactionHistory[position].date, transactionHistory[position].transactionType.type)
             holder.itemView.findNavController().navigate(action)
 
         }
