@@ -45,7 +45,7 @@
     <string name="mis_datos">Mis datos</string>
     <string name="cbu">CBU</string>
     <string name="show_password">Show password</string>
-    <string name="ingresa_el_monto_en_pesos_que_quieras_convertir">Ingresa el monto en pesos\n que quieras convertir</string>
+    <string name="ingresa_el_monto_en_pesos_que_quieras_convertir">Ingresa el monto en pesos \n que quieras convertir</string>
     <string name="movimientos">MOVIMIENTOS</string>
     <string name="signo_pesos">$</string>
     <string name="tipo">Tipo</string>
