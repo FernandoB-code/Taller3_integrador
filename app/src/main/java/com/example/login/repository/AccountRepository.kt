@@ -1,23 +1,30 @@
 package com.example.login.repository
 
+import android.app.Application
 import android.content.ContentValues
+import android.content.Context
 import android.util.Log
 import com.example.login.entity.Account
 import com.example.login.entity.User
+import com.example.login.util.RandomWorldGenerator
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
+import java.security.AccessController.getContext
 
 class AccountRepository {
 
     private val db = Firebase.firestore
     private val auth = Firebase.auth
 
-    fun createUserAccount(email:String) : Account{
+    fun createUserAccount(email:String, context : Context) : Account{
+
         val cvu = generateRandomCV()
-        var account= Account(email,cvu,"ALIAS", 2000.00, mutableListOf())
+        val string = generateRandomAlias(context)
+
+        var account= Account(email,cvu,generateRandomAlias(context), 2000.00, mutableListOf())
         db.collection("accounts").document(account.CVU).set(account)
         return account
     }
@@ -28,6 +35,21 @@ class AccountRepository {
         return List(length) { charset.random() }
             .joinToString("")
     }
+
+    private fun generateRandomAlias(context : Context) : String {
+
+        var random = RandomWorldGenerator()
+        var list =  random.main(context)
+        var string1 = list.random()
+        var string2 = list.random()
+        var string3 = list.random()
+        var alias = string1 + "." + string2 + "." + string3
+
+        return alias
+
+    }
+
+
 
     suspend fun getAccountFrom(): Account {
         var account = Account()

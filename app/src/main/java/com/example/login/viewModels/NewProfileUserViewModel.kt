@@ -1,5 +1,6 @@
 package com.example.login.viewModels
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.login.entity.User
@@ -15,13 +16,14 @@ class NewProfileUserViewModel : ViewModel() {
         name:String?,
         password:String?,
         mail:String?,
-        dni: String?
+        dni: String?,
+        context : Context
     ){
         if(!name.isNullOrEmpty() && !password.isNullOrEmpty() && !mail.isNullOrEmpty() && !dni.isNullOrEmpty()){
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(mail, password)
                 .addOnSuccessListener {
                     val id = FirebaseAuth.getInstance().currentUser?.email.toString()
-                    val account = accountRepository.createUserAccount(mail)
+                    val account = accountRepository.createUserAccount(mail, context)
                     val accountId = account.CVU
                     UserRepository.saveUser(User(id,name, dni, mail, accountId), success)
 

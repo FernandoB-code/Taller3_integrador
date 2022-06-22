@@ -84,7 +84,7 @@ class TransactionFragment : Fragment() {
             recyclerTransaction.setLayoutManager(mLinearLayoutManager)
 
             mLinearLayoutManager.reverseLayout = true
-           // mLinearLayoutManager.stackFromEnd = false
+            //mLinearLayoutManager.stackFromEnd = false
             adapter = TransactionAdapter(txHistoryList)
             recyclerTransaction.adapter = adapter
 
