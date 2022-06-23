@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.login.R
+import com.example.login.util.RandomWorldGenerator
 import com.example.login.viewModels.TransferMoneyViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -61,9 +62,6 @@ class TransferMoneyFragment : Fragment() {
             } else {
                 Snackbar.make(rootLayout,"Debe completar los campos", Snackbar.LENGTH_LONG).show()
             }
-
-            /*val action = TransferMoneyFragmentDirections.actionTransferMoneyFragmentToTransaction()
-            v.findNavController().navigate(action)*/
         }
     }
 

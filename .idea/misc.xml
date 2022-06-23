@@ -39,8 +39,10 @@
         <entry key="..\:/Users/admin/Desktop/pineapple-lv/Taller3_integrador/app/src/main/res/layout/login_fragment.xml" value="0.33" />
         <entry key="..\:/Users/admin/Desktop/pineapple-lv/Taller3_integrador/app/src/main/res/layout/transaction_fragment.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_transfer.xml" value="0.22871376811594202" />
+        <entry key="app/src/main/res/layout/item_transaction.xml" value="0.1648148148148148" />
         <entry key="app/src/main/res/layout/login_fragment.xml" value="0.16893115942028986" />
         <entry key="app/src/main/res/layout/transaction_fragment.xml" value="0.23489583333333333" />
+        <entry key="app/src/main/res/menu/bottom_bar.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -72,7 +72,8 @@ class NewProfileUserFragment : Fragment() {
                     userName.text.toString(),
                     userPassword.text.toString(),
                     userMail.text.toString(),
-                    userId.text.toString()
+                    userId.text.toString(),
+                    requireContext()
                 )
             } else {
                 Snackbar.make(rootLayout, "Datos incompletos", Snackbar.LENGTH_LONG).show()
