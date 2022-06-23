@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottombar_navgraph"
+    app:startDestination="@id/transactionFragment">
+
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.example.login.fragments.TransactionFragment"
+        android:label="transaction_fragment"
+        tools:layout="@layout/transaction_fragment" />
+    <fragment
+        android:id="@+id/detailTxFragment2"
+        android:name="com.example.login.fragments.DetailTxFragment"
+        android:label="detail_tx_fragment"
+        tools:layout="@layout/detail_tx_fragment" />
+    <fragment
+        android:id="@+id/depositMoneyFragment2"
+        android:name="com.example.login.fragments.DepositMoneyFragment"
+        android:label="fragment_deposit_money"
+        tools:layout="@layout/fragment_deposit_money" />
+</navigation>

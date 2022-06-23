@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item
+        android:id = "@+id/transactionFragment"
+        android:icon = "@drawable/ic_android_black_24dp"
+        android:title = "Home"/>
+
+    <item
+        android:id = "@+id/detailTxFragment2"
+        android:icon = "@drawable/ic_baseline_arrow_upward_24"
+        android:title = "Ingresar"/>
+
+    <item
+        android:id = "@+id/depositMoneyFragment2"
+        android:icon = "@drawable/ic_baseline_autorenew_24"
+        android:title = "Transferir"/>
+
 </menu>
