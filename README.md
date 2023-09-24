@@ -3,7 +3,7 @@
 ## Final App: pineapple.
 ## Main Development Branch: develop.
 
-"Application that allows simulating the operation of a virtual wallet."
+Application that allows simulating the operation of a virtual wallet.
 
 #### Team Members:
 
