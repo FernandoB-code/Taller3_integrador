@@ -1,15 +1,13 @@
-# Trabajo Final Taller de Programación 3
-#
+# Final Project Programming Workshop 3
 
-## App final : pineapple.
-## Rama principal de desarrollo : develop.
+## Final App: pineapple.
+## Main Development Branch: develop.
 
-#
-##
+"Application that allows simulating the operation of a virtual wallet."
 
-#### Integrantes:
+#### Team Members:
 
-##### Ayelen Centurion
-##### Camila Jaurena
-##### Clara Franzoni
-##### Fernando Bernasconi
+- Ayelen Centurion
+- Camila Jaurena
+- Clara Franoni
+- Fernando Bernasconi
