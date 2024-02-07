@@ -1,15 +1,20 @@
-# Trabajo Final Taller de Programación 3
-#
+# Final Project Programming Workshop 3
 
-## App final : pineapple.
-## Rama principal de desarrollo : develop.
+## Final App: pineapple.
+## Main Development Branch: develop.
 
-#
-##
+Application that allows simulating the operation of a virtual wallet.
 
-#### Integrantes:
+Funtions: 
 
-##### Ayelen Centurion
-##### Camila Jaurena
-##### Clara Franzoni
-##### Fernando Bernasconi
+- Create an account
+- Transfer money between accounts
+- Convert currency to USD
+- See transaction histories with details
+
+#### Team Members:
+
+- Ayelen Centurion
+- Camila Jaurena
+- Clara Franoni
+- Fernando Bernasconi
